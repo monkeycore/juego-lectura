@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego de Sílabas</title>
+  <style>
+    body {
+      background: url('https://img.freepik.com/vector-gratis/ilustracion-animales-bosque-acuarela_52683-94104.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Comic Sans MS', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    #silaba {
+      font-size: 80px;
+      font-weight: bold;
+      background-color: rgba(25, 118, 210, 0.9);
+      color: white;
+      display: inline-block;
+      padding: 20px 40px;
+      border-radius: 20px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+  .ejemplos {
+  background-color: rgba(25, 118, 210, 0.85);
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 15px 30px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+}
+    }
+    button {
+      margin-top: 30px;
+      font-size: 24px;
+      padding: 12px 40px;
+      background-color: #00bfa5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #008e76;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mia ¡aprendamos las sílabas!</h1>
+  <div id="silaba"></div>
+  <div id="ejemplos-container"></div>
+  <br>
+  <button onclick="mostrarSiguiente()">SIGUIENTE</button>
+
+  <script>
+    const silabas = [
+      {
+        silaba: "ma",
+        ejemplos: ["mano", "mar", "mamá", "mapa"]
+      },
+      {
+        silaba: "me",
+        ejemplos: ["mesa", "mecha", "media", "melón"]
+      },
+      {
+        silaba: "mi",
+        ejemplos: ["mimo", "mira", "mina", "mia"]
+      },
+      {
+        silaba: "mo",
+        ejemplos: ["mono", "moto", "moca", "mochila"]
+      },
+      {
+        silaba: "mu",
+        ejemplos: ["muro", "mudo", "mundo", "muela"]
+      },
+      {
+        silaba: "pa",
+        ejemplos: ["pato", "papá", "pan", "parque"]
+      },
+      {
+        silaba: "pe",
+        ejemplos: ["pera", "pez", "pelota", "peluquería"]
+      },
+      {
+        silaba: "pi",
+        ejemplos: ["pino", "pico", "piso", "pintar"]
+      },
+      {
+        silaba: "po",
+        ejemplos: ["pollo", "polo", "poco", "poncho"]
+      },
+      {
+        silaba: "pu",
+        ejemplos: ["puma", "puño", "punto", "puerta"]
+      },
+      {
+        silaba: "la",
+        ejemplos: ["lata", "lago", "lápiz", "lana"]
+      },
+      {
+        silaba: "le",
+        ejemplos: ["león", "leche", "lengua", "lente"]
+      },
+      {
+        silaba: "li",
+        ejemplos: ["lima", "libro", "lindo", "lila"]
+      },
+      {
+        silaba: "lo",
+        ejemplos: ["lobo", "loma", "lodo", "lomo"]
+      },
+      {
+        silaba: "lu",
+        ejemplos: ["luna", "luz", "lupa", "luca"]
+      },
+      {
+        silaba: "sa",
+        ejemplos: ["sapo", "saco", "sal", "sala"]
+      },
+      {
+        silaba: "se",
+        ejemplos: ["sed", "seis", "selva", "señal"]
+      },
+      {
+        silaba: "si",
+        ejemplos: ["silla", "siete", "sirena", "simple"]
+      },
+      {
+        silaba: "so",
+        ejemplos: ["sol", "sopa", "soga", "sonrisa"]
+      },
+      {
+        silaba: "su",
+        ejemplos: ["suma", "sube", "sueño", "susto"]
+      }
+    ];
+
+    const iconos = {
+      "mamá": "👩‍👧", "mano": "🤚", "mar": "🌊", "mapa": "🗺️",
+      "mesa": "🪑", "melón": "🍈", "mimo": "🤐", "mira": "👀",
+      "mono": "🐵", "moto": "🏍️", "muela": "🦷", "mundo": "🌍",
+      "pato": "🦆", "pan": "🍞", "parque": "🏞️", "pera": "🍐",
+      "pez": "🐟", "pelota": "⚽", "pino": "🌲", "pintar": "🎨",
+      "pollo": "🐔", "puerta": "🚪", "lata": "🥫", "lago": "🏞️",
+      "lápiz": "✏️", "luna": "🌙", "león": "🦁", "leche": "🥛",
+      "libro": "📖", "lobo": "🐺", "luz": "💡", "sapo": "🐸",
+      "sal": "🧂", "sol": "☀️", "sopa": "🥣", "silla": "🪑",
+      "sirena": "🧜", "sonrisa": "😊", "sueño": "😴", "susto": "😱"
+    };
+
+    let index = 0;
+
+    function mostrarSiguiente() {
+      const s = silabas[index];
+      document.getElementById("silaba").textContent = s.silaba.toUpperCase();
+
+      const ejemplosHTML = s.ejemplos.map(palabra => {
+        const emoji = iconos[palabra] || "";
+        return `<div class="ejemplos">${emoji} ${palabra}</div>`;
+      }).join("");
+
+      document.getElementById("ejemplos-container").innerHTML = ejemplosHTML;
+
+      index = (index + 1) % silabas.length;
+    }
+
+    window.onload = mostrarSiguiente;
+  </script>
+</body>
+</html>

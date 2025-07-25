@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú de Juegos</title>
+  <style>
+    body {
+      background: url('https://img.freepik.com/vector-gratis/ilustracion-animales-bosque-acuarela_52683-94104.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Comic Sans MS', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      color: #0d47a1;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .opcion {
+      background-color: rgba(25, 118, 210, 0.85);
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      width: 80%;
+      max-width: 400px;
+    }
+    .opcion:hover {
+      background-color: #0069c0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Juegos disponibles</h1>
+  <div class="menu">
+    <a href="juego-letras.html" class="opcion">🔤 Aprender las letras</a>
+    <a href="juego-silabas.html" class="opcion">🟦 Aprender las sílabas</a>
+  </div>
+</body>
+</html>
