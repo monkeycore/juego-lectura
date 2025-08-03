@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Cuento de Mimi</title>
+  <style>
+    body {
+      background: url('https://img.freepik.com/vector-gratis/ilustracion-animales-bosque-acuarela_52683-94104.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Comic Sans MS', sans-serif;
+      padding: 30px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #0d47a1;
+    }
+    .cuento-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(255,255,255,0.85);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    }
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      margin: 10px;
+    }
+    .texto {
+      flex: 1;
+      font-size: 26px;
+      padding: 20px;
+    }
+    .resaltado {
+      color: #d32f2f;
+      font-weight: bold;
+      background-color: #ffe082;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    .botones {
+      text-align: center;
+      margin-top: 30px;
+    }
+    button {
+      margin: 10px;
+      font-size: 22px;
+      padding: 10px 25px;
+      background-color: #00bfa5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #008e76;
+    }
+
+    @media (max-width: 768px) {
+      .cuento-container {
+        flex-direction: column;
+      }
+      .texto {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 La Aventura de Mimi</h1>
+  <div class="cuento-container">
+    <img id="imagen" src="ilustracion1.png" alt="Ilustración del cuento">
+    <div id="texto" class="texto"></div>
+  </div>
+  <div class="botones">
+    <button onclick="mostrarSiguiente()">SIGUIENTE</button>
+    <button onclick="location.href='index.html'">🏠 VOLVER AL MENÚ</button>
+  </div>
+
+  <script>
+    const bloques = [
+      {
+        imagen: "ilustracion1.png",
+        texto: "Mimi era una monita muy mimada que vivía en la montaña. Un día, su mamá le dijo: —Ve a buscar manzanas al árbol mágico, pero ten mimo, ¡no te mojes en el río!"
+      },
+      {
+        imagen: "ilustracion2.png",
+        texto: "Mimi caminó con su amigo el ratón Memo. Juntos cantaban: 🎵 Ma, me, mi, mo, mu, buscamos la fruta azul 🎵. De repente, escucharon: ¡Muuuuu! Era una mula bloqueando el camino."
+      },
+      {
+        imagen: "ilustracion3.png",
+        texto: "Mimi le dio una manzana a la mula y ella se movió. ¡Podían pasar! Al llegar al árbol, vieron muchas manzanas mágicas que brillaban. —¡Mira, Memo! ¡Es un milagro! —dijo Mimi. Llenaron su mochila de frutas."
+      },
+      {
+        imagen: "ilustracion4.png",
+        texto: "Al volver, la mamá de Mimi hizo mermelada con las manzanas. Todos cantaron: 🎵 Ma, me, mi, mo, mu, ¡qué rico jugo azul! 🎵. Mimi fue valiente y ayudó con mimo."
+      }
+    ];
+
+    let index = 0;
+
+    function resaltarSilabas(texto) {
+      const silabas = ["ma", "me", "mi", "mo", "mu"];
+      const regex = new RegExp(`(${silabas.join('|')})`, 'gi');
+      return texto.replace(regex, (match) => `<span class="resaltado">${match}</span>`);
+    }
+
+    function mostrarSiguiente() {
+      const bloque = bloques[index];
+      document.getElementById("imagen").src = bloque.imagen;
+      document.getElementById("texto").innerHTML = resaltarSilabas(bloque.texto);
+      index = (index + 1) % bloques.length;
+    }
+
+    window.onload = mostrarSiguiente;
+  </script>
+</body>
+</html>
+
